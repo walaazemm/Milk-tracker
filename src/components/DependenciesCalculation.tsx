@@ -40,7 +40,7 @@ export function DependenciesCalculation({ onNavigate }: DependenciesCalculationP
     <div className="space-y-6">
       {/* Header */}
       <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
-        <h2 className="text-gray-800">Calcul des dépendances</h2>
+        <h2 className="text-gray-800">Calcul des dépenses</h2>
         <p className="text-gray-600 mt-2">Suivi et analyse des dépenses opérationnelles et des coûts</p>
       </div>
 
