@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-type Language = 'en' | 'fr' | 'ar';
+type Language = 'fr' | 'ar';
 
 interface LanguageContextType {
   language: Language;
@@ -11,169 +11,24 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const translations = {
-  en: {
-    // App Name
-    appName: 'MilkTrack',
-    appTagline: 'Real-time Monitoring',
-    
-    // Welcome Landing Page
-    welcomeTitle: 'Welcome to MilkTrack',
-    welcomeSubtitle: 'Advanced Milk Production Management System',
-    welcomeDescription: 'Monitor your dairy farm with precision. Track production, manage your herd, and optimize your operations in real-time.',
-    getStarted: 'Get Started',
-    
-    // Navigation
-    welcome: 'Welcome',
-    notifications: 'Notifications',
-    
-    // Main Cards
-    productionCalculating: 'Production Calculating',
-    productionCalculatingDesc: 'Monitor and analyze milk production with detailed charts and statistics',
-    dependenciesCalculation: 'Dependencies Calculation',
-    dependenciesCalculationDesc: 'Track feed, veterinary costs, and operational expenses',
-    cheptelMonitoring: 'Cheptel Monitoring',
-    cheptelMonitoringDesc: 'Access individual cow records and health tracking',
-    recentPrices: 'Recent Prices of Milk',
-    recentPricesDesc: 'Stay updated with current market prices and trends',
-    accessModule: 'Access module',
-    
-    // Quick Stats
-    totalCows: 'Total Cows',
-    todayProduction: 'Today\'s Production',
-    averagePerCow: 'Average/Cow',
-    currentPrice: 'Current Price',
-    
-    // Cheptel Monitoring
-    searchByMatriculation: 'Search by Matriculation',
-    browseAllIndividuals: 'Browse All Individuals',
-    enterMatriculation: 'Enter Matriculation Number',
-    enterMatriculationDesc: 'Type the cow\'s unique identification number',
-    accessTechnicalFile: 'Access Technical File',
-    availableMatriculations: 'Available matriculations',
-    searchPlaceholder: 'Search by matriculation, name, or variety...',
-    age: 'Age',
-    weight: 'Weight',
-    lastProduction: 'Last Production',
-    years: 'years',
-    
-    // Cow Details
-    technicalFile: 'Technical File',
-    individualCowRecord: 'Individual cow record',
-    backToMonitoring: 'Back to Monitoring',
-    basicInformation: 'Basic Information',
-    healthVaccination: 'Health & Vaccination',
-    productionStatistics: 'Production Statistics',
-    notesObservations: 'Notes & Observations',
-    birthDate: 'Birth Date',
-    purchaseDate: 'Purchase Date',
-    currentLactationDay: 'Current Lactation Day',
-    lactationPeriod: 'Lactation Period',
-    feedConsumption: 'Feed Consumption',
-    healthStatus: 'Health Status',
-    lastVaccination: 'Last Vaccination',
-    nextVaccination: 'Next Vaccination',
-    avgDailyProduction: 'Average Daily Production',
-    totalLifetimeProduction: 'Total Lifetime Production',
-    calvingHistory: 'Calving History',
-    calvings: 'calvings',
-    days: 'days',
-    
-    // Production Calculation
-    completeProductionAnalysis: 'Complete production analysis and statistics',
-    productionPerIndividual: 'Production per Individual',
-    weeklyAverage: 'Weekly Average',
-    perCowAverage: 'Per Cow Average',
-    monthlyTotal: 'Monthly Total',
-    fromYesterday: 'from yesterday',
-    dayAverage: 'day average',
-    perDayPerCow: 'Per day per cow',
-    currentMonth: 'Current month',
-    productionTrends: 'Production Trends',
-    weekly: 'Weekly',
-    monthly: 'Monthly',
-    totalProduction: 'Total Production',
-    avgPerCow: 'Avg per Cow',
-    monthlyProduction: 'Monthly Production',
-    productionDistribution: 'Production Distribution by Variety',
-    cheptelComposition: 'Cheptel Composition',
-    numberOfCows: 'Number of Cows',
-    performanceAnalysis: 'Performance Analysis',
-    topPerformers: 'Top Performers (30+ L/day)',
-    averagePerformers: 'Average Performers (20-30 L/day)',
-    belowAverage: 'Below Average (<20 L/day)',
-    cows: 'cows',
-    
-    // Dependencies
-    trackOperationalExpenses: 'Track and analyze operational expenses and costs',
-    totalMonthlyCost: 'Total Monthly Cost',
-    allExpensesIncluded: 'All expenses included',
-    feedCosts: 'Feed Costs',
-    largestExpenseCategory: 'Largest expense category',
-    veterinary: 'Veterinary',
-    healthCare: 'Health & care',
-    costPerCow: 'Cost per Cow',
-    monthlyAverage: 'Monthly average',
-    expenseOverview: 'Expense Overview',
-    feedAnalysis: 'Feed Analysis',
-    veterinaryCosts: 'Veterinary Costs',
-    monthlyExpenseBreakdown: 'Monthly Expense Breakdown',
-    feed: 'Feed',
-    labor: 'Labor',
-    utilities: 'Utilities',
-    maintenance: 'Maintenance',
-    totalExpenseTrend: 'Total Expense Trend',
-    totalExpenses: 'Total Expenses',
-    feedConsumptionCosts: 'Feed Consumption & Costs',
-    perDay: 'per day',
-    feedCostDistribution: 'Feed Cost Distribution',
-    cost: 'Cost',
-    veterinaryServicesBreakdown: 'Veterinary Services Breakdown',
-    upcomingScheduledExpenses: 'Upcoming Scheduled Expenses',
-    dueIn: 'Due in',
-    
-    // Prices
-    trackMarketPrices: 'Track current market prices and trends',
-    positiveMarketTrend: 'Positive market trend',
-    regionalVariations: 'Regional variations',
-    thisWeek: 'this week',
-    weekAverage: 'week average',
-    regionalHigh: 'Regional High',
-    monthlyRevenue: 'Monthly Revenue',
-    basedOnCurrentPrice: 'Based on current price',
-    priceTrends: 'Price Trends',
-    regionalPrices: 'Regional Prices',
-    yearComparison: 'Year Comparison',
-    priceTrendLast12Weeks: 'Price Trend (Last 12 Weeks)',
-    price: 'Price',
-    productionVolumeVsPrice: 'Production Volume vs Price',
-    volume: 'Volume',
-    regionalPriceComparison: 'Regional Price Comparison',
-    yearOverYearComparison: 'Year-over-Year Price Comparison',
-    lastYear: 'Last Year',
-    thisYear: 'This Year',
-    averageIncrease: 'Average Increase',
-    yearOverYearGrowth: 'Year-over-year growth',
-    revenueImpact: 'Revenue Impact',
-    monthlyIncrease: 'Monthly increase',
-    bestMonth: 'Best Month',
-    peakPricingPeriod: 'Peak pricing period',
-    marketInsights: 'Market Insights',
-  },
   fr: {
     // App Name
     appName: 'MilkTrack',
     appTagline: 'Surveillance en Temps Réel',
-    
+
     // Welcome Landing Page
     welcomeTitle: 'Bienvenue sur MilkTrack',
     welcomeSubtitle: 'Système Avancé de Gestion de Production Laitière',
     welcomeDescription: 'Surveillez votre ferme laitière avec précision. Suivez la production, gérez votre troupeau et optimisez vos opérations en temps réel.',
     getStarted: 'Commencer',
-    
+
     // Navigation
     welcome: 'Bienvenue',
     notifications: 'Notifications',
-    
+    languageSwitch: 'Langue',
+    french: 'Français',
+    arabic: 'العربية',
+
     // Main Cards
     productionCalculating: 'Calcul de Production',
     productionCalculatingDesc: 'Surveiller et analyser la production laitière avec des graphiques et statistiques détaillés',
@@ -184,13 +39,13 @@ const translations = {
     recentPrices: 'Prix Récents du Lait',
     recentPricesDesc: 'Restez informé des prix et tendances actuels du marché',
     accessModule: 'Accéder au module',
-    
+
     // Quick Stats
     totalCows: 'Total Vaches',
     todayProduction: 'Production du Jour',
     averagePerCow: 'Moyenne/Vache',
     currentPrice: 'Prix Actuel',
-    
+
     // Cheptel Monitoring
     searchByMatriculation: 'Recherche par Matricule',
     browseAllIndividuals: 'Parcourir Tous les Individus',
@@ -203,7 +58,7 @@ const translations = {
     weight: 'Poids',
     lastProduction: 'Dernière Production',
     years: 'ans',
-    
+
     // Cow Details
     technicalFile: 'Fiche Technique',
     individualCowRecord: 'Dossier individuel de la vache',
@@ -225,7 +80,7 @@ const translations = {
     calvingHistory: 'Historique de Vêlage',
     calvings: 'vêlages',
     days: 'jours',
-    
+
     // Production Calculation
     completeProductionAnalysis: 'Analyse complète de production et statistiques',
     productionPerIndividual: 'Production par Individu',
@@ -250,7 +105,7 @@ const translations = {
     averagePerformers: 'Performances Moyennes (20-30 L/jour)',
     belowAverage: 'Sous la Moyenne (<20 L/jour)',
     cows: 'vaches',
-    
+
     // Dependencies
     trackOperationalExpenses: 'Suivre et analyser les dépenses et coûts opérationnels',
     totalMonthlyCost: 'Coût Mensuel Total',
@@ -278,7 +133,7 @@ const translations = {
     veterinaryServicesBreakdown: 'Répartition des Services Vétérinaires',
     upcomingScheduledExpenses: 'Dépenses Programmées à Venir',
     dueIn: 'Dans',
-    
+
     // Prices
     trackMarketPrices: 'Suivre les prix et tendances actuels du marché',
     positiveMarketTrend: 'Tendance positive du marché',
@@ -307,21 +162,25 @@ const translations = {
     peakPricingPeriod: 'Période de prix maximaux',
     marketInsights: 'Aperçus du Marché',
   },
+
   ar: {
     // App Name
-    appName: 'MilkTrack',
+    appName: 'ميلك تراك',
     appTagline: 'المراقبة في الوقت الفعلي',
-    
+
     // Welcome Landing Page
-    welcomeTitle: 'مرحباً بك في MilkTrack',
+    welcomeTitle: 'مرحباً بك في ميلك تراك',
     welcomeSubtitle: 'نظام متقدم لإدارة إنتاج الحليب',
     welcomeDescription: 'راقب مزرعة الألبان الخاصة بك بدقة. تتبع الإنتاج وإدارة القطيع وتحسين العمليات في الوقت الفعلي.',
     getStarted: 'ابدأ الآن',
-    
+
     // Navigation
-    welcome: 'الترحيب',
+    welcome: 'أهلاً وسهلاً',
     notifications: 'الإشعارات',
-    
+    languageSwitch: 'اللغة',
+    french: 'الفرنسية',
+    arabic: 'العربية',
+
     // Main Cards
     productionCalculating: 'حساب الإنتاج',
     productionCalculatingDesc: 'مراقبة وتحليل إنتاج الحليب بمخططات وإحصائيات مفصلة',
@@ -332,13 +191,13 @@ const translations = {
     recentPrices: 'الأسعار الحديثة للحليب',
     recentPricesDesc: 'ابق على اطلاع بأسعار واتجاهات السوق الحالية',
     accessModule: 'الوصول إلى الوحدة',
-    
+
     // Quick Stats
     totalCows: 'إجمالي الأبقار',
     todayProduction: 'إنتاج اليوم',
     averagePerCow: 'المتوسط/بقرة',
     currentPrice: 'السعر الحالي',
-    
+
     // Cheptel Monitoring
     searchByMatriculation: 'البحث بالرقم التسلسلي',
     browseAllIndividuals: 'تصفح جميع الأفراد',
@@ -351,7 +210,7 @@ const translations = {
     weight: 'الوزن',
     lastProduction: 'آخر إنتاج',
     years: 'سنوات',
-    
+
     // Cow Details
     technicalFile: 'الملف التقني',
     individualCowRecord: 'سجل البقرة الفردي',
@@ -373,7 +232,7 @@ const translations = {
     calvingHistory: 'تاريخ الولادة',
     calvings: 'ولادات',
     days: 'أيام',
-    
+
     // Production Calculation
     completeProductionAnalysis: 'تحليل شامل للإنتاج والإحصائيات',
     productionPerIndividual: 'الإنتاج لكل فرد',
@@ -398,7 +257,7 @@ const translations = {
     averagePerformers: 'الأداء المتوسط (20-30 لتر/يوم)',
     belowAverage: 'أقل من المتوسط (<20 لتر/يوم)',
     cows: 'أبقار',
-    
+
     // Dependencies
     trackOperationalExpenses: 'تتبع وتحليل المصاريف والتكاليف التشغيلية',
     totalMonthlyCost: 'التكلفة الشهرية الإجمالية',
@@ -426,7 +285,7 @@ const translations = {
     veterinaryServicesBreakdown: 'تفصيل الخدمات البيطرية',
     upcomingScheduledExpenses: 'النفقات المجدولة القادمة',
     dueIn: 'خلال',
-    
+
     // Prices
     trackMarketPrices: 'تتبع أسعار واتجاهات السوق الحالية',
     positiveMarketTrend: 'اتجاه السوق الإيجابي',
@@ -458,10 +317,11 @@ const translations = {
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  // Default to French, NO English
+  const [language, setLanguage] = useState<Language>('fr');
 
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations['en']] || key;
+    return translations[language][key as keyof typeof translations['fr']] || key;
   };
 
   return (
