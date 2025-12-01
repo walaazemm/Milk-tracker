@@ -32,7 +32,7 @@ const translations = {
     // Main Cards
     productionCalculating: 'Calcul de Production',
     productionCalculatingDesc: 'Surveiller et analyser la production laitière avec des graphiques et statistiques détaillés',
-    dependenciesCalculation: 'Calcul des Dépendances',
+    dependenciesCalculation: 'Calcul des Dépenses',
     dependenciesCalculationDesc: 'Suivre l\'alimentation, les coûts vétérinaires et les dépenses opérationnelles',
     cheptelMonitoring: 'Surveillance du Cheptel',
     cheptelMonitoringDesc: 'Accéder aux dossiers individuels et au suivi de santé',
