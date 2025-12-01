@@ -23,7 +23,7 @@ const cowData: Record<string, any> = {
     calvingHistory: 3,
     currentLactation: 120,
     feedConsumption: 45,
-    notes: 'Top performer, consistent production',
+    notes: 'Meilleure performeuse, production constante',
   },
   'MC-002': {
     id: 'MC-002',
@@ -33,7 +33,7 @@ const cowData: Record<string, any> = {
     weight: 420,
     birthDate: '2022-05-10',
     purchaseDate: '2022-06-15',
-    health: 'Good',
+    health: 'Bon',
     lastVaccination: '2024-11-01',
     nextVaccination: '2025-02-01',
     avgProduction: 28,
@@ -42,7 +42,7 @@ const cowData: Record<string, any> = {
     calvingHistory: 2,
     currentLactation: 95,
     feedConsumption: 38,
-    notes: 'High fat content milk',
+    notes: 'Lait à haute teneur en matière grasse',
   },
   'MC-003': {
     id: 'MC-003',
@@ -61,17 +61,17 @@ const cowData: Record<string, any> = {
     calvingHistory: 4,
     currentLactation: 145,
     feedConsumption: 48,
-    notes: 'Strong genetics, excellent breeder',
+    notes: 'Génétique forte, excellente reproductrice',
   },
   'MC-004': {
     id: 'MC-004',
     name: 'Rosie',
-    variety: 'Guernsey',
+    variety: 'Guernesey',
     age: 4,
     weight: 540,
     birthDate: '2021-06-18',
     purchaseDate: '2021-07-25',
-    health: 'Good',
+    health: 'Bon',
     lastVaccination: '2024-10-25',
     nextVaccination: '2025-01-25',
     avgProduction: 30,
@@ -80,7 +80,7 @@ const cowData: Record<string, any> = {
     calvingHistory: 3,
     currentLactation: 110,
     feedConsumption: 42,
-    notes: 'Golden milk, high butterfat',
+    notes: 'Lait doré, haute teneur en beurre',
   },
   'MC-005': {
     id: 'MC-005',
@@ -90,7 +90,7 @@ const cowData: Record<string, any> = {
     weight: 700,
     birthDate: '2019-11-30',
     purchaseDate: '2020-01-10',
-    health: 'Good',
+    health: 'Bon',
     lastVaccination: '2024-08-15',
     nextVaccination: '2024-11-15',
     avgProduction: 33,
@@ -99,7 +99,7 @@ const cowData: Record<string, any> = {
     calvingHistory: 5,
     currentLactation: 160,
     feedConsumption: 50,
-    notes: 'Veteran cow, reliable producer',
+    notes: 'Vache vétéran, productrice fiable',
   },
   'MC-006': {
     id: 'MC-006',
@@ -118,12 +118,12 @@ const cowData: Record<string, any> = {
     calvingHistory: 1,
     currentLactation: 60,
     feedConsumption: 35,
-    notes: 'Young heifer, first lactation',
+    notes: 'Jeune génisse, première lactation',
   },
   'MC-007': {
     id: 'MC-007',
     name: 'Cookie',
-    variety: 'Brown Swiss',
+    variety: 'Suisse brune',
     age: 5,
     weight: 620,
     birthDate: '2020-10-05',
@@ -137,7 +137,7 @@ const cowData: Record<string, any> = {
     calvingHistory: 4,
     currentLactation: 130,
     feedConsumption: 44,
-    notes: 'Hardy breed, good for grazing',
+    notes: 'Race robuste, bonne pour le pâturage',
   },
   'MC-008': {
     id: 'MC-008',
@@ -147,7 +147,7 @@ const cowData: Record<string, any> = {
     weight: 630,
     birthDate: '2022-07-20',
     purchaseDate: '2022-08-28',
-    health: 'Good',
+    health: 'Bon',
     lastVaccination: '2024-10-30',
     nextVaccination: '2025-01-30',
     avgProduction: 29,
@@ -156,7 +156,7 @@ const cowData: Record<string, any> = {
     calvingHistory: 2,
     currentLactation: 105,
     feedConsumption: 40,
-    notes: 'Gentle temperament, easy to handle',
+    notes: 'Tempérament doux, facile à manipuler',
   },
 };
 
@@ -165,14 +165,17 @@ export function CowDetails({ cowId, onNavigate }: CowDetailsProps) {
 
   if (!cow) {
     return (
-      <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-200 text-center">
-        <p className="text-gray-600">Cow not found</p>
-        <button
-          onClick={() => onNavigate('monitoring')}
-          className="mt-4 text-green-600 hover:text-green-700"
-        >
-          Back to Monitoring
-        </button>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-8">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-center text-gray-600 text-lg">Vache non trouvée</p>
+          <button
+            onClick={() => onNavigate('monitoring')}
+            className="mt-4 text-green-600 hover:text-green-700 flex items-center gap-2"
+          >
+            <ArrowLeft size={20} />
+            Retour au suivi
+          </button>
+        </div>
       </div>
     );
   }
@@ -180,155 +183,150 @@ export function CowDetails({ cowId, onNavigate }: CowDetailsProps) {
   const healthColor = cow.health === 'Excellent' ? 'text-green-600 bg-green-50' : 'text-blue-600 bg-blue-50';
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center gap-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
         <button
           onClick={() => onNavigate('monitoring')}
-          className="p-2 hover:bg-white rounded-lg transition-colors"
+          className="p-2 hover:bg-white rounded-lg transition-colors mb-6 inline-flex items-center gap-2 text-gray-700"
         >
-          <ArrowLeft className="w-6 h-6 text-gray-700" />
+          <ArrowLeft size={20} />
+          Retour
         </button>
-        <div>
-          <h2 className="text-gray-800">Technical File</h2>
-          <p className="text-gray-600">Individual cow record</p>
-        </div>
-      </div>
 
-      {/* Main Info Card */}
-      <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-8 text-white shadow-xl">
-        <div className="flex items-start justify-between">
-          <div>
-            <div className="inline-block bg-white/20 px-4 py-1 rounded-full text-sm mb-4">
-              {cow.id}
-            </div>
-            <h1 className="text-white mb-2">{cow.name}</h1>
-            <p className="text-green-50 text-lg">{cow.variety}</p>
-          </div>
-          <div className={`${healthColor} px-4 py-2 rounded-xl flex items-center gap-2`}>
-            <Heart className="w-4 h-4" />
-            <span>{cow.health}</span>
-          </div>
-        </div>
-      </div>
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">Dossier technique</h1>
+        <p className="text-gray-600 mb-8">Dossier individuel de la vache</p>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-          <div className="flex items-center gap-3 mb-2">
-            <Scale className="w-5 h-5 text-blue-600" />
-            <p className="text-sm text-gray-600">Weight</p>
-          </div>
-          <p className="text-gray-800">{cow.weight} kg</p>
-        </div>
-        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-          <div className="flex items-center gap-3 mb-2">
-            <Calendar className="w-5 h-5 text-purple-600" />
-            <p className="text-sm text-gray-600">Age</p>
-          </div>
-          <p className="text-gray-800">{cow.age} years</p>
-        </div>
-        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-          <div className="flex items-center gap-3 mb-2">
-            <Milk className="w-5 h-5 text-green-600" />
-            <p className="text-sm text-gray-600">Avg Production</p>
-          </div>
-          <p className="text-gray-800">{cow.avgProduction} L/day</p>
-        </div>
-        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-          <div className="flex items-center gap-3 mb-2">
-            <Activity className="w-5 h-5 text-orange-600" />
-            <p className="text-sm text-gray-600">Calvings</p>
-          </div>
-          <p className="text-gray-800">{cow.calvingHistory}</p>
-        </div>
-      </div>
-
-      {/* Detailed Information */}
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* Basic Information */}
-        <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200 space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <DnaIcon className="w-5 h-5 text-green-600" />
-            <h3 className="text-gray-800">Basic Information</h3>
-          </div>
-          <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Birth Date</span>
-              <span className="text-gray-800">{cow.birthDate}</span>
+        {/* Main Info Card */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <p className="text-gray-600 text-sm font-semibold">ID</p>
+              <p className="text-2xl font-bold text-gray-800 mt-2">{cow.id}</p>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Purchase Date</span>
-              <span className="text-gray-800">{cow.purchaseDate}</span>
+            <div>
+              <p className="text-gray-600 text-sm font-semibold">Nom</p>
+              <p className="text-2xl font-bold text-gray-800 mt-2">{cow.name}</p>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Current Lactation Day</span>
-              <span className="text-gray-800">{cow.currentLactation} days</span>
+            <div>
+              <p className="text-gray-600 text-sm font-semibold">Variété</p>
+              <p className="text-2xl font-bold text-gray-800 mt-2">{cow.variety}</p>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Lactation Period</span>
-              <span className="text-gray-800">{cow.lactationPeriod} days</span>
-            </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-600">Feed Consumption</span>
-              <span className="text-gray-800">{cow.feedConsumption} kg/day</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Health & Vaccination */}
-        <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200 space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <Heart className="w-5 h-5 text-red-600" />
-            <h3 className="text-gray-800">Health & Vaccination</h3>
-          </div>
-          <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Health Status</span>
-              <span className={`px-3 py-1 rounded-full text-sm ${healthColor}`}>
+            <div>
+              <p className="text-gray-600 text-sm font-semibold">État de santé</p>
+              <p className={`text-2xl font-bold mt-2 ${healthColor} px-3 py-1 rounded-full text-center`}>
                 {cow.health}
-              </span>
+              </p>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Last Vaccination</span>
-              <span className="text-gray-800">{cow.lastVaccination}</span>
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-lg shadow p-6">
+            <p className="text-gray-600 text-sm font-semibold flex items-center gap-2">
+              <Scale size={18} /> Poids
+            </p>
+            <p className="text-2xl font-bold text-blue-600 mt-3">{cow.weight} kg</p>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <p className="text-gray-600 text-sm font-semibold flex items-center gap-2">
+              <Calendar size={18} /> Âge
+            </p>
+            <p className="text-2xl font-bold text-purple-600 mt-3">{cow.age} ans</p>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <p className="text-gray-600 text-sm font-semibold flex items-center gap-2">
+              <Milk size={18} /> Production moyenne
+            </p>
+            <p className="text-2xl font-bold text-green-600 mt-3">{cow.avgProduction} L/jour</p>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <p className="text-gray-600 text-sm font-semibold flex items-center gap-2">
+              <Activity size={18} /> Vêlages
+            </p>
+            <p className="text-2xl font-bold text-orange-600 mt-3">{cow.calvingHistory}</p>
+          </div>
+        </div>
+
+        {/* Detailed Information */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Basic Information */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
+              <DnaIcon size={20} className="text-blue-600" />
+              Informations de base
+            </h2>
+            <div className="space-y-4">
+              <div className="border-b pb-3">
+                <p className="text-gray-600 text-sm">Date de naissance</p>
+                <p className="text-gray-800 font-semibold mt-1">{cow.birthDate}</p>
+              </div>
+              <div className="border-b pb-3">
+                <p className="text-gray-600 text-sm">Date d'achat</p>
+                <p className="text-gray-800 font-semibold mt-1">{cow.purchaseDate}</p>
+              </div>
+              <div className="border-b pb-3">
+                <p className="text-gray-600 text-sm">Jour de lactation actuel</p>
+                <p className="text-gray-800 font-semibold mt-1">{cow.currentLactation} jours</p>
+              </div>
+              <div className="border-b pb-3">
+                <p className="text-gray-600 text-sm">Période de lactation</p>
+                <p className="text-gray-800 font-semibold mt-1">{cow.lactationPeriod} jours</p>
+              </div>
+              <div>
+                <p className="text-gray-600 text-sm">Consommation alimentaire</p>
+                <p className="text-gray-800 font-semibold mt-1">{cow.feedConsumption} kg/jour</p>
+              </div>
             </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-600">Next Vaccination</span>
-              <span className="text-gray-800">{cow.nextVaccination}</span>
+          </div>
+
+          {/* Health & Vaccination */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
+              <Heart size={20} className="text-red-600" />
+              Santé et vaccination
+            </h2>
+            <div className="space-y-4">
+              <div className="border-b pb-3">
+                <p className="text-gray-600 text-sm">État de santé</p>
+                <p className={`font-semibold mt-1 ${healthColor} px-2 py-1 rounded`}>{cow.health}</p>
+              </div>
+              <div className="border-b pb-3">
+                <p className="text-gray-600 text-sm">Dernière vaccination</p>
+                <p className="text-gray-800 font-semibold mt-1">{cow.lastVaccination}</p>
+              </div>
+              <div>
+                <p className="text-gray-600 text-sm">Prochaine vaccination</p>
+                <p className="text-gray-800 font-semibold mt-1">{cow.nextVaccination}</p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Production Stats */}
-        <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200 space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <Milk className="w-5 h-5 text-blue-600" />
-            <h3 className="text-gray-800">Production Statistics</h3>
-          </div>
-          <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Average Daily Production</span>
-              <span className="text-gray-800">{cow.avgProduction} L</span>
+        <div className="bg-white rounded-lg shadow p-6 mt-8 mb-8">
+          <h2 className="text-lg font-bold text-gray-800 mb-6">Statistiques de production</h2>
+          <div className="grid grid-cols-3 gap-6">
+            <div className="text-center">
+              <p className="text-gray-600 text-sm">Production quotidienne moyenne</p>
+              <p className="text-3xl font-bold text-green-600 mt-3">{cow.avgProduction} L</p>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Total Lifetime Production</span>
-              <span className="text-gray-800">{cow.totalProduction.toLocaleString()} L</span>
+            <div className="text-center">
+              <p className="text-gray-600 text-sm">Production totale au cours de la vie</p>
+              <p className="text-3xl font-bold text-blue-600 mt-3">{cow.totalProduction.toLocaleString()} L</p>
             </div>
-            <div className="flex justify-between py-2">
-              <span className="text-gray-600">Calving History</span>
-              <span className="text-gray-800">{cow.calvingHistory} calvings</span>
+            <div className="text-center">
+              <p className="text-gray-600 text-sm">Historique des vêlages</p>
+              <p className="text-3xl font-bold text-orange-600 mt-3">{cow.calvingHistory} vêlages</p>
             </div>
           </div>
         </div>
 
         {/* Notes */}
-        <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200 space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <Activity className="w-5 h-5 text-purple-600" />
-            <h3 className="text-gray-800">Notes & Observations</h3>
-          </div>
-          <p className="text-gray-600 leading-relaxed">{cow.notes}</p>
+        <div className="bg-white rounded-lg shadow p-6">
+          <h2 className="text-lg font-bold text-gray-800 mb-4">Notes et observations</h2>
+          <p className="text-gray-700 italic">{cow.notes}</p>
         </div>
       </div>
     </div>
