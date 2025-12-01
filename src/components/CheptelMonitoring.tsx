@@ -23,19 +23,16 @@ export function CheptelMonitoring({ onNavigate }: CheptelMonitoringProps) {
   const [activeTab, setActiveTab] = useState<'matriculation' | 'list'>('matriculation');
   const { t } = useLanguage();
 
-  const handleMatriculationSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cow = mockCows.find(c => c.id.toLowerCase() === matriculation.toLowerCase());
-    if (cow) {
-      onNavigate('cowDetails', cow.id);
-    } else {
-      alert('Matricule non trouvé. Veuillez vérifier et réessayer.');
-    }
-  };
-      alert('Matriculation not found. Please check and try again.');
-    }
-  };
-
+const handleMatriculationSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  const cow = mockCows.find(c => c.id.toLowerCase() === matriculation.toLowerCase());
+  if (cow) {
+    onNavigate('cowDetails', cow.id);
+  } else {
+    alert('Matricule non trouvé. Veuillez vérifier et réessayer.');
+  }
+};
+  
   const filteredCows = mockCows.filter(cow =>
     cow.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
     cow.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
